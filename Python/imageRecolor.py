@@ -5,13 +5,14 @@
 
 from PIL import Image
 import math
-imgName=   'cortx.png'
+imgName=   'C:/Users/451516/Documents/github/tetraquark_c_tester/content/post/energyflow/spr.png'
 img = Image.open(imgName)
 
 pixels = img.load()
 targetColor=[255,255,255]   # the original color
 replacementColor=(245,244,241)    # replacement color
-offsetSquared=12  # this is the sum of the squares of RGB values. Set this to 0 if you want the exact RGB value
+#replacementColor=(255,0,0)
+offsetSquared=100  # this is the sum of the squares of RGB values. Set this to 0 if you want the exact RGB value
 
 for i in range(img.size[0]):
     for j in range(img.size[1]):
@@ -21,7 +22,6 @@ for i in range(img.size[0]):
 #img.show()
 imgNameS=imgName.split(".")
 img.save(imgNameS[0]+"_recolored."+imgNameS[1] )
-
 
 
 
