@@ -1,0 +1,23 @@
+// Jan, 2023
+// extract a table from a pdf file
+//https://www.coilcraft.com/getmedia/8b8dc5bb-0e94-4194-b919-ac2586274005/spice_1008cs.pdf
+// download the pdf and save it under the same folder.
+
+thefile="spice_1008cs";
+theTable=Open(
+	".\"||thefile||".pdf",
+	PDF Tables(
+		Table(
+			table name( thefile ),
+			add rows( page( 2 ), Rect( 0.75, 1.3736, 4.0817, 4.7197 ) ),
+			add rows( page( 2 ), Rect( 4.375, 1.3752, 7.7067, 4.5747 ) )
+		)
+	)
+)[1];
+colnames=theTable<<get column names();current data table(theTable);
+column(colnames[4])<<set name("R1(ohms)");
+column(colnames[5])<<set name("R2(ohms)");
+
+theTable<< save( thefile||".csv" );
+
+theTable<< close window();
