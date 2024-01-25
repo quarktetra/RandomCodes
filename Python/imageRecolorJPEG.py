@@ -5,19 +5,19 @@
 
 from PIL import Image
 import math
-imgName=   'C:/Users/451516/Documents/github/tetraquark_c_tester/content/post/l4cseismometer/L4C.png'
+imgName=   'C:/Users/451516/Documents/github/tetraquark_c_tester/content/post/solenoidwithpermeablecore/featured0.jpg'
 img = Image.open(imgName)
 img = img.convert("RGBA")
 
 pixels = img.load()
 targetColor=[255,255,255]   # the original color
-replacementColor=(245,244,241)    # replacement color
+replacementColor=(245,244,241,0)    # replacement color
 #replacementColor=(255,0,0)
 offsetSquared=100  # this is the sum of the squares of RGB values. Set this to 0 if you want the exact RGB value
 
 for i in range(img.size[0]):
     for j in range(img.size[1]):
-        if (pixels[i, j][0]-targetColor[0])**2 +(pixels[i, j][1]-targetColor[1])**2 +(pixels[i, j][2]-targetColor[1])**2 < offsetSquared and i>400:
+        if (pixels[i, j][0]-targetColor[0])**2 +(pixels[i, j][1]-targetColor[1])**2 +(pixels[i, j][2]-targetColor[1])**2 < offsetSquared:
          pixels[i, j] = replacementColor
 
 #img.show()

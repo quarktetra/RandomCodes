@@ -16,10 +16,14 @@ print(imgNames )
 
 for imgName in imgNames:
     img = Image.open(imgName)
+    img = img.convert("RGBA")
+
+
 
     pixels = img.load()
     targetColor=[255,255,255]   # the original color
-    replacementColor=(245,244,241)    # replacement color
+    #replacementColor=(245,244,241)    # replacement color
+    replacementColor=(245,244,241,0)    # replacement color
     offsetSquared=12  # this is the sum of the squares of RGB values. Set this to 0 if you want the exact RGB value
 
     for i in range(img.size[0]):
